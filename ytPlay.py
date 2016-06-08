@@ -24,7 +24,7 @@ vids = []
 
 def startVideo():
     global vids
-    print('inside startVideo')
+    print('inside startVideo....')
     if not vids:
         window.player.stopVideo()
         return
