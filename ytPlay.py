@@ -18,7 +18,7 @@ def lineToList(streng):
     return (viId, start, end)
 
 def unpackVids(vidStr):
-    [lineToList(v) for v in vidStr.split('\n')if v.strip()]
+    return [lineToList(v) for v in vidStr.split('\n')if v.strip()]
 
 vids = []
 
