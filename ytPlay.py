@@ -31,4 +31,4 @@ def startVideo():
 
     timer.set_timeout(startVideo, (end-start)*1000 + 600)
 
-timer.set_timeout(startVideo, 2000)
+timer.set_timeout(startVideo, 500)
