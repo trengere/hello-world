@@ -1,6 +1,6 @@
 from browser import window
 from browser import timer
-
+from videos import vidStr
 def lineToList(streng):
     viId, interval = streng.strip().split()
     res = []
@@ -17,14 +17,10 @@ def lineToList(streng):
     start, end = res
     return (viId, start, end)
 
-def unpackVids(vidStr):
-    return [lineToList(v) for v in vidStr.split('\n')if v.strip()]
-
-vids = []
+vids = [lineToList(v) for v in vidStr.split('\n')if v.strip()]
 
 def startVideo():
     global vids
-    print(vids)
     if not vids:
         window.player.stopVideo()
         return
@@ -34,5 +30,5 @@ def startVideo():
     window.player.playVideo()
 
     timer.set_timeout(startVideo, (end-start)*1000 + 600)
-    print(window.player.getAvailableQualityLevels())
 
+timer.set_timeout(startVideo, 2000)
