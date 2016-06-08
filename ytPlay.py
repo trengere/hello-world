@@ -35,4 +35,3 @@ def startVideo():
     timer.set_timeout(startVideo, (end-start)*1000 + 600)
     print(window.player.getAvailableQualityLevels())
 
-timer.set_timeout(startVideo, 2000)
