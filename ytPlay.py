@@ -18,18 +18,25 @@ def lineToList(streng):
     return (viId, start, end)
 
 vids = [lineToList(v) for v in vidStr.split('\n')if v.strip()]
+endTime = 0
 
+def finishedYet():
+    global endTime
+    if int(window.player.getCurrentTime())<endTime:
+        timer.set_timeout(finishedYet,1000)
+    else:
+        timer.set_timeout(startVideo,200)
+        
 def startVideo():
-    global vids
+    global vids, endTime
     if not vids:
         window.player.stopVideo()
         return
-    vidId, start, end = vids.pop(0)
-    print(window.player.getCurrentTime())
+    vidId, start, endTime = vids.pop(0)
     window.player.loadVideoById(vidId, start)
     window.player.setPlaybackQuality("hd720")
     window.player.playVideo()
-
-    timer.set_timeout(startVideo, (end-start)*1000 + 600)
+    timer.set_timeout(finishedYet,1000)
+    
 
 timer.set_timeout(startVideo, 500)
