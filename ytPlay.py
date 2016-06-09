@@ -25,6 +25,7 @@ def startVideo():
         window.player.stopVideo()
         return
     vidId, start, end = vids.pop(0)
+    print(window.player.getCurrentTime())
     window.player.loadVideoById(vidId, start)
     window.player.setPlaybackQuality("hd720")
     window.player.playVideo()
